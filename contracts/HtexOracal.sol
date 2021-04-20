@@ -519,16 +519,14 @@ contract ERC20UpgradeSafe is ContextUpgradeSafe , IERC20{
 }
 
 contract HTXRate is ERC20UpgradeSafe{
-    // TODO
     // total increment
-    uint256 public  _totalIncrementAmount;
-    uint256 public  _totalDeveloperAmount;
-    uint256 public _totalDAOAmount;
-    uint256 public  _totalDAOAward;
-    uint256 public _totalLpAward;
+    uint256 _totalIncrementAmount;
+    uint256 _totalDeveloperAmount;
+    uint256 _totalDAOAmount;
+    uint256 _totalDAOAward;
+    uint256 _totalLpAward;
 
-    // TODO
-    uint256 public PERCENT;
+    uint256 PERCENT;
 
     modifier onlyContractAddress() {
         require(_msgSender() == daoAddress() || _msgSender() == crowdfundingAddress(), "require Contract Address");
@@ -666,7 +664,7 @@ contract HTXRate is ERC20UpgradeSafe{
         return _userIndexMapping[_lpAddress];
     }
     
-    // init TODO
+    // init
     function initialize(address crowdfundingAddress_, address daoAddress_, address lpAddress_, address devAddress_) external onlyAdmin{
         _setCrowdfundingAddress(crowdfundingAddress_);
         _setDAOAddress(daoAddress_);
