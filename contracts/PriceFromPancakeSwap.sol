@@ -2,7 +2,7 @@ pragma solidity ^0.6.0;
 
 import "./interface/IPancakePair.sol";
 
-contract PriceOfBurgerSwap{
+contract PriceFromPancakeSwap{
     address owner;
     mapping(address => IPancakePair) pancakePairMapping;
 
