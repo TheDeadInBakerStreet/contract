@@ -337,12 +337,6 @@ contract CrowdfundingConstant is Common{
 		_USDT = 0xa71EdC38d189767582C38A3145b5873052c3e47a;
 		_USDTContract = IERC20(_USDT);
 	}
-	
-	// TODO delete
-	function setUSDTContract(address USDTAddress) external {
-	    _USDT = USDTAddress;
-	    _USDTContract = IERC20(_USDT);
-	}
 
 	//		get
 	function __USDTContract() internal view returns(IERC20){
