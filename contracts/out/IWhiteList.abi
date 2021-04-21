@@ -1,0 +1,1 @@
+[{"inputs":[{"internalType":"address","name":"addr","type":"address"}],"name":"isExist","outputs":[{"internalType":"bool","name":"result","type":"bool"}],"stateMutability":"view","type":"function"}]

@@ -1,0 +1,261 @@
+{
+	"compiler": {
+		"version": "0.6.0+commit.26b70077"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "admin",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "applied",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "result",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "twitterLink_",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "telegramID_",
+						"type": "string"
+					}
+				],
+				"name": "applyWhiteList",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "userAddress",
+						"type": "address"
+					}
+				],
+				"name": "check",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "isApplying",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "result",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "addr",
+						"type": "address"
+					}
+				],
+				"name": "isExist",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "result",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "linkLists",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "userAddress",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "twitterLink",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "telegramID",
+								"type": "string"
+							},
+							{
+								"internalType": "uint8",
+								"name": "status",
+								"type": "uint8"
+							}
+						],
+						"internalType": "struct WhiteList.link[]",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "__admin",
+						"type": "address"
+					}
+				],
+				"name": "setAdmin",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "day",
+						"type": "uint256"
+					}
+				],
+				"name": "setEndTime",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "__owner",
+						"type": "address"
+					}
+				],
+				"name": "setOwner",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "whiteList",
+				"outputs": [
+					{
+						"internalType": "uint8",
+						"name": "value",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"methods": {}
+		},
+		"userdoc": {
+			"methods": {}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"localhost/contracts/WhiteList.sol": "WhiteList"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"localhost/contracts/Common.sol": {
+			"keccak256": "0xb93b5afe7ea433b4cf3f77c5e4b66f57d99035713f43e7594acd313d4f3f74ee",
+			"urls": [
+				"bzz-raw://8d332ece2fabe21f25e046c465eaac8e9b894115eeacb13cb77fe2f9f8137d6b",
+				"dweb:/ipfs/QmYWrzB9DxDDncQQ48Zdys799pb8Z5vVzDxyu71627rU3F"
+			]
+		},
+		"localhost/contracts/WhiteList.sol": {
+			"keccak256": "0xb197e967ae4cc45383f39dbb7b20ce5a520ff3d8962b6e40fac61c208b563482",
+			"urls": [
+				"bzz-raw://8a560ac14831974f5495a4c390199fd760ec8583df3956ad52cc075a85af987a",
+				"dweb:/ipfs/QmdyuuabcWs74Qxpgd45dBAyLmJfTQFyiZaoEUz8DBAz4m"
+			]
+		},
+		"localhost/contracts/interface/IWhiteList.sol": {
+			"keccak256": "0x93477c7cd31a028c7653beb8e7edf0225419bc3b733c6d1ef026e0d77185119e",
+			"urls": [
+				"bzz-raw://a6d7fa8ffa29cadc094be4bf84ecb562e45ab9c5b6d66ab3ab9fba9d6940c7b7",
+				"dweb:/ipfs/QmU9k5XRsamHVFfYZmYJoJPyF244aBsXxMAVawjdWkRFUG"
+			]
+		},
+		"localhost/contracts/lib/Strings.sol": {
+			"keccak256": "0x890885661de6aa23dbdec10502e0000c26f1f4c76918c09985264bf3ab1b9233",
+			"urls": [
+				"bzz-raw://f3e8645becb0240c720ad0dcdc85c962a6561bcfafc37e73748720c9f108d439",
+				"dweb:/ipfs/QmcxMZEy3bh1fgb79iLQPtLmm3aGEWTArMgpht7sGqdAAo"
+			]
+		}
+	},
+	"version": 1
+}
