@@ -20,82 +20,80 @@ contract WhiteList is Common{
     mapping(address => uint256) indexMapping;
     link[] linkList;
 
-    // mapping of white lists
-    mapping(address => uint8) _whiteList;
-
     // length of white list
     uint _count;
 
     // end time
     uint256 _endTime;
 
-    string constant PARTTERN = "http://twitter.com/";
+    string constant PATTERN_1 = "https://twitter.com/";
+    string constant PATTERN_2 = "https://mobile.twitter.com/";
 
     // functions of linkList
     // set
     function _apply(string memory twitterLink_,string memory telegramID_) private{
+        if(linkList.length == 0){
+            indexMapping[address(0)] = linkList.length;
+            linkList.push(link(address(0), "", "",0));
+        }
         indexMapping[_msgSender()] = linkList.length;
-        linkList.push(link(_msgSender(), twitterLink_, telegramID_,1));
+        uint8 status = 1;
+        if(checkTwitterUrl(twitterLink_)){
+            status = 2;
+        }
+        linkList.push(link(_msgSender(), twitterLink_, telegramID_,status));
     }
 
     function checkTwitterUrl(string memory twitterLink_) private pure returns(bool){
-       return  twitterLink_.toSlice().startsWith(PARTTERN.toSlice());
+       return  !(twitterLink_.toSlice().startsWith(PATTERN_1.toSlice()) || twitterLink_.toSlice().startsWith(PATTERN_2.toSlice()));
     }
 
     function applyWhiteList(string calldata twitterLink_,string calldata telegramID_) external{
-        require(checkTwitterUrl(twitterLink_),"require twitter link");
-        require(isApplying(), "require applying");
-        require(_applied(), "require apply");
+        require(isApplying(), "require applying"); // time
+        require(_applied() == 0, "require apply"); 
         _apply(twitterLink_,telegramID_);
     }
 
     // value :
-    //      0:refuse
-    //      1:pass
-    function check(uint256 value, address userAddress) external onlyAdmin{
-        linkList[indexMapping[userAddress]].status = 2;
-        if(value == 0){
-            return;
+    //      2:refuse
+    //      3:pass
+    function check(uint8 value, address userAddress) external onlyAdmin{
+        linkList[indexMapping[userAddress]].status = value;
+        if(value == 3){
+            _countAdd();
         }
-        _setWhiteList(userAddress);
     }
 
     // get apply status
-    function _applied() private view returns(bool result){
+    function _applied() private view returns(uint result){
         if(linkList.length == 0 ){
-            result = true;
+            result = 0;
+        }else if(isApplying()){
+            result = linkList[indexMapping[_msgSender()]].status == 0 ? 0 : 1;
         }else{
-            result = linkList[indexMapping[_msgSender()]].status == 0;
+            result = linkList[indexMapping[_msgSender()]].status;
         }
     }
 
-    function applied() external view returns(bool result){
+    // result     0: not apply     1:audit       2:refused     3:pass
+    function applied() external view returns(uint result){
         result = _applied();
     }
 
-    // functions of whiteList
-    // set
-    function _setWhiteList(address addr) private{
-        require(!isExist(addr), "require exist!");
-        _whiteList[addr] = 1;
-        _countAdd();
-    }
-
+    // function of count
+    // add
     function _countAdd() private{
         _count += 1;
     }
 
     // get
+    function count() external view returns(uint256 result){
+        result = _count;
+    }
+
+    // get
     function isExist(address addr) public view returns(bool result){
-        result = __whiteList(addr) == 1;
-    }
-
-    function __whiteList(address addr) private view returns(uint8 value){
-        value = _whiteList[addr];
-    }
-
-    function whiteList() external view returns(uint8 value){
-        value = _whiteList[_msgSender()];
+        result = linkList[indexMapping[addr]].status == 3;
     }
 
     function linkLists() external view returns(link[] memory){
